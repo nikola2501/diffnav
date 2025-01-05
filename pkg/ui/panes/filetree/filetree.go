@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/atotto/clipboard"
 	"github.com/bluekeyes/go-gitdiff/gitdiff"
 	"github.com/charmbracelet/bubbles/viewport"
 	tea "github.com/charmbracelet/bubbletea"
@@ -13,6 +14,7 @@ import (
 
 	"github.com/dlvhdr/diffnav/pkg/constants"
 	"github.com/dlvhdr/diffnav/pkg/filenode"
+	"github.com/dlvhdr/diffnav/pkg/ui/common"
 	"github.com/dlvhdr/diffnav/pkg/utils"
 )
 
@@ -42,6 +44,20 @@ func (m Model) SetCursor(cursor int) Model {
 	m.scrollSelectedFileIntoView(m.tree)
 	m.vp.SetContent(m.printWithoutRoot())
 	return m
+}
+
+func (m Model) CopyFilePath(cursor int) tea.Cmd {
+	if len(m.files) == 0 {
+		return nil
+	}
+	name := filenode.GetFileName(m.files[cursor])
+	err := clipboard.WriteAll(name)
+	if err != nil {
+		return func() tea.Msg {
+			return common.ErrMsg{Err: err}
+		}
+	}
+	return nil
 }
 
 const contextLines = 15

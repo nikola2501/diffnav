@@ -10,6 +10,7 @@ type KeyMap struct {
 	ToggleFileTree key.Binding
 	Search         key.Binding
 	Quit           key.Binding
+	Copy           key.Binding
 }
 
 var keys = &KeyMap{
@@ -41,8 +42,21 @@ var keys = &KeyMap{
 		key.WithKeys("q", "ctrl+c"),
 		key.WithHelp("q", "quit"),
 	),
+	Copy: key.NewBinding(
+		key.WithKeys("c"),
+		key.WithHelp("c", "copy file path"),
+	),
 }
 
 func getKeys() []key.Binding {
-	return []key.Binding{keys.Up, keys.Down, keys.CtrlD, keys.CtrlU, keys.ToggleFileTree, keys.Search, keys.Quit}
+	return []key.Binding{
+		keys.Up,
+		keys.Down,
+		keys.CtrlD,
+		keys.CtrlU,
+		keys.ToggleFileTree,
+		keys.Search,
+		keys.Copy,
+		keys.Quit,
+	}
 }
