@@ -43,8 +43,8 @@ var keys = &KeyMap{
 		key.WithHelp("q", "quit"),
 	),
 	Copy: key.NewBinding(
-		key.WithKeys("c"),
-		key.WithHelp("c", "copy file path"),
+		key.WithKeys("y"),
+		key.WithHelp("y", "copy file path"),
 	),
 }
 

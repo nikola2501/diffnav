@@ -115,7 +115,7 @@ func (m mainModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 					cmd = m.setCursor(m.cursor + 1)
 					cmds = append(cmds, cmd)
 				}
-			case "c":
+			case "y":
 				cmd = m.fileTree.CopyFilePath(m.cursor)
 				if cmd != nil {
 					cmds = append(cmds, cmd)

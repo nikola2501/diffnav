@@ -63,7 +63,7 @@ git config --global pager.diff diffnav
 | <kbd>Ctrl-u</kbd> | Scroll the diff up   |
 | <kbd>e</kbd>      | Toggle the file tree |
 | <kbd>t</kbd>      | Search/go-to file    |
-| <kbd>c</kbd>      | Copy file path       |
+| <kbd>y</kbd>      | Copy file path       |
 | <kbd>q</kbd>      | Quit                 |
 
 ## Under the hood
