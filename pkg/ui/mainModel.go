@@ -116,7 +116,7 @@ func (m mainModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 					cmds = append(cmds, cmd)
 				}
 			case "c":
-				cmd = m.copySelectedFilePath()
+				cmd = m.fileTree.CopyFilePath(m.cursor)
 				if cmd != nil {
 					cmds = append(cmds, cmd)
 				}
@@ -316,10 +316,5 @@ func (m *mainModel) setCursor(cursor int) tea.Cmd {
 	m.cursor = cursor
 	m.diffViewer, cmd = m.diffViewer.SetFilePatch(m.files[m.cursor])
 	m.fileTree = m.fileTree.SetCursor(m.cursor)
-	return cmd
-}
-
-func (m *mainModel) copySelectedFilePath() tea.Cmd {
-	cmd := m.fileTree.CopyFilePath(m.cursor)
 	return cmd
 }
